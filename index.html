@@ -1,131 +1,164 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ray 的個人履歷</title>
     <meta name="description" content="Ray 的個人靜態履歷網頁，包含自我介紹、技能、作品集、經歷與聯絡方式。">
-    <link rel="stylesheet" href="styles.css">
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2c3e50',
+                        secondary: '#34495e',
+                        accent: '#3498db',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .section-block {
+                @apply bg-white border border-slate-200 rounded-lg p-6 mb-8;
+            }
+            .section-title {
+                @apply text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4;
+            }
+            .timeline-dot::before {
+                content: '';
+                @apply absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-accent;
+            }
+        }
+    </style>
 </head>
-<body>
-    <header class="header">
-        <nav class="nav-container" aria-label="主要導覽">
-            <ul class="nav-links">
-                <li><a href="#about" aria-label="前往自我介紹">自我介紹</a></li>
-                <li><a href="#skills" aria-label="前往技能區塊">技能</a></li>
-                <li><a href="#portfolio" aria-label="前往作品集區塊">作品</a></li>
-                <li><a href="#experience" aria-label="前往經歷區塊">經歷</a></li>
-                <li><a href="#contact" aria-label="前往聯絡方式區塊">聯絡方式</a></li>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="max-w-6xl mx-auto px-4 py-4" aria-label="主要導覽">
+            <ul class="flex flex-wrap justify-center gap-4 sm:gap-8 text-primary font-semibold">
+                <li><a href="#about" class="hover:text-accent hover:underline transition-colors" aria-label="前往自我介紹">自我介紹</a></li>
+                <li><a href="#skills" class="hover:text-accent hover:underline transition-colors" aria-label="前往技能區塊">技能</a></li>
+                <li><a href="#portfolio" class="hover:text-accent hover:underline transition-colors" aria-label="前往作品集區塊">作品</a></li>
+                <li><a href="#experience" class="hover:text-accent hover:underline transition-colors" aria-label="前往經歷區塊">經歷</a></li>
+                <li><a href="#contact" class="hover:text-accent hover:underline transition-colors" aria-label="前往聯絡方式區塊">聯絡方式</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="main-container">
+    <main class="max-w-6xl mx-auto px-4 py-8 sm:py-12 grid grid-cols-1 md:grid-cols-12 gap-8">
         <!-- 桌機版左欄 / 手機版上方 -->
-        <aside class="sidebar">
-            <section id="about" class="section">
-                <div class="profile-header">
+        <aside class="md:col-span-4">
+            <section id="about" class="section-block text-center md:text-left">
+                <div class="mb-6 flex flex-col items-center md:items-start">
                     <!-- 替換處：請換成您的真實照片 -->
-                    <img src="https://via.placeholder.com/150" alt="Ray 的個人照片" class="profile-img">
-                    <h1>Ray</h1>
-                    <p class="tagline">IT/網路安全工程師 | 系統管理員</p>
+                    <img src="https://via.placeholder.com/150" alt="Ray 的個人照片" class="w-36 h-36 rounded-full object-cover border-4 border-slate-100 mb-4">
+                    <h1 class="text-3xl font-bold text-primary mb-1">Ray</h1>
+                    <p class="text-secondary font-medium">IT/網路安全工程師 | 系統管理員</p>
                 </div>
-                <div class="about-content">
-                    <h2>自我介紹</h2>
-                    <p>
+                <div class="text-left">
+                    <h2 class="section-title">自我介紹</h2>
+                    <p class="text-slate-600">
                         <!-- 替換處：請修改為您的真實自我介紹 -->
                         你好！我是一名專注於資訊安全與系統管理的 IT 工程師，擁有管理 Veeam、Wazuh、SentinelOne、FortiGate 等企業級架構的實務經驗。我熱衷於透過自動化工具與腳本提升維運效率，並致力於打造安全可靠的 IT 環境。
                     </p>
                 </div>
             </section>
 
-            <section id="contact" class="section">
-                <h2>聯絡方式</h2>
-                <ul class="contact-list">
+            <section id="contact" class="section-block">
+                <h2 class="section-title">聯絡方式</h2>
+                <ul class="space-y-3 text-slate-600">
                     <!-- 替換處：請換成您的真實聯絡資訊 -->
-                    <li>Email: <a href="mailto:ray@example.com" aria-label="發送電子郵件給 Ray">ray@example.com</a></li>
-                    <li>LinkedIn: <a href="https://linkedin.com/in/ray-example" target="_blank" rel="noopener noreferrer" aria-label="前往 Ray 的 LinkedIn 檔案">linkedin.com/in/ray-example</a></li>
-                    <li>GitHub: <a href="https://github.com/ray-example" target="_blank" rel="noopener noreferrer" aria-label="前往 Ray 的 GitHub 檔案">github.com/ray-example</a></li>
+                    <li class="flex items-center gap-2">
+                        <span class="font-semibold w-20">Email:</span> 
+                        <a href="mailto:ray@example.com" class="text-accent hover:underline break-all" aria-label="發送電子郵件給 Ray">ray@example.com</a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="font-semibold w-20">LinkedIn:</span> 
+                        <a href="https://linkedin.com/in/ray-example" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline break-all" aria-label="前往 Ray 的 LinkedIn 檔案">linkedin.com/in/ray-example</a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="font-semibold w-20">GitHub:</span> 
+                        <a href="https://github.com/ray-example" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline break-all" aria-label="前往 Ray 的 GitHub 檔案">github.com/ray-example</a>
+                    </li>
                 </ul>
             </section>
         </aside>
 
         <!-- 桌機版右欄 / 手機版下方 -->
-        <div class="content-area">
-            <section id="skills" class="section">
-                <h2>專業技能</h2>
-                <div class="skills-grid">
+        <div class="md:col-span-8">
+            <section id="skills" class="section-block">
+                <h2 class="section-title">專業技能</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- 替換處：請修改為您的真實技能 -->
-                    <div class="skill-category">
-                        <h3>系統管理</h3>
-                        <ul>
+                    <div>
+                        <h3 class="text-lg font-semibold text-secondary mb-2">系統管理</h3>
+                        <ul class="list-disc list-inside text-slate-600 space-y-1">
                             <li>Veeam Backup & Replication</li>
                             <li>Synology NAS 管理</li>
                             <li>Windows Server Administration</li>
                         </ul>
                     </div>
-                    <div class="skill-category">
-                        <h3>資訊安全</h3>
-                        <ul>
+                    <div>
+                        <h3 class="text-lg font-semibold text-secondary mb-2">資訊安全</h3>
+                        <ul class="list-disc list-inside text-slate-600 space-y-1">
                             <li>Wazuh SIEM</li>
                             <li>SentinelOne EDR</li>
                             <li>FortiGate 防火牆設定</li>
                         </ul>
                     </div>
-                    <div class="skill-category">
-                        <h3>開發與自動化</h3>
-                        <ul>
+                    <div>
+                        <h3 class="text-lg font-semibold text-secondary mb-2">開發與自動化</h3>
+                        <ul class="list-disc list-inside text-slate-600 space-y-1">
                             <li>Google Apps Script (GAS)</li>
                             <li>Python / Shell Scripting</li>
-                            <li>HTML / CSS / JavaScript</li>
+                            <li>HTML / CSS / JS</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
-            <section id="portfolio" class="section">
-                <h2>作品集</h2>
-                <div class="portfolio-list">
+            <section id="portfolio" class="section-block">
+                <h2 class="section-title">作品集</h2>
+                <div class="space-y-6">
                     <!-- 替換處：請修改為您的真實作品 -->
-                    <article class="portfolio-item">
-                        <h3>古飾案內所 儀表板 (GAS)</h3>
-                        <p>基於 Google Apps Script 開發的電商儀表板，支援複雜訂單處理、折扣疊加運算（會員與手動折抵）以及訂金與餘額追蹤功能。</p>
-                        <a href="#" class="btn" aria-label="查看古飾案內所儀表板專案細節">查看專案</a>
+                    <article class="border border-slate-200 rounded p-4 hover:shadow-md transition-shadow">
+                        <h3 class="text-xl font-bold text-primary mb-2">古飾案內所 儀表板 (GAS)</h3>
+                        <p class="text-slate-600 mb-4">基於 Google Apps Script 開發的電商儀表板，支援複雜訂單處理、折扣疊加運算（會員與手動折抵）以及訂金與餘額追蹤功能。</p>
+                        <a href="#" class="inline-block bg-primary hover:bg-secondary text-white font-medium py-2 px-4 rounded transition-colors" aria-label="查看古飾案內所儀表板專案細節">查看專案</a>
                     </article>
-                    <article class="portfolio-item">
-                        <h3>企業備份架構建置</h3>
-                        <p>設計並實作基於 Veeam Essentials 的備份架構，包含 MFA 存取控制與獨立服務帳號規劃，確保資料安全與合規性。</p>
-                        <a href="#" class="btn" aria-label="查看企業備份架構建置專案細節">查看專案</a>
+                    <article class="border border-slate-200 rounded p-4 hover:shadow-md transition-shadow">
+                        <h3 class="text-xl font-bold text-primary mb-2">企業備份架構建置</h3>
+                        <p class="text-slate-600 mb-4">設計並實作基於 Veeam Essentials 的備份架構，包含 MFA 存取控制與獨立服務帳號規劃，確保資料安全與合規性。</p>
+                        <a href="#" class="inline-block bg-primary hover:bg-secondary text-white font-medium py-2 px-4 rounded transition-colors" aria-label="查看企業備份架構建置專案細節">查看專案</a>
                     </article>
                 </div>
             </section>
 
-            <section id="experience" class="section">
-                <h2>工作經歷</h2>
-                <div class="timeline">
+            <section id="experience" class="section-block">
+                <h2 class="section-title">工作經歷</h2>
+                <div class="border-l-2 border-slate-200 pl-4 ml-2 space-y-8">
                     <!-- 替換處：請修改為您的真實經歷 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023 - 至今</div>
-                        <div class="timeline-content">
-                            <h3>資深 IT 工程師</h3>
-                            <h4>某科技股份有限公司</h4>
-                            <p>負責維運公司內部核心網路與資安設備，導入 SentinelOne EDR 並整合 Wazuh 進行日誌分析，提升威脅偵測率。</p>
-                        </div>
+                    <div class="relative timeline-dot">
+                        <div class="text-accent font-bold mb-1">2023 - 至今</div>
+                        <h3 class="text-xl font-bold text-primary">資深 IT 工程師</h3>
+                        <h4 class="text-lg text-secondary mb-2">某科技股份有限公司</h4>
+                        <p class="text-slate-600">負責維運公司內部核心網路與資安設備，導入 SentinelOne EDR 並整合 Wazuh 進行日誌分析，提升威脅偵測率。</p>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2020 - 2023</div>
-                        <div class="timeline-content">
-                            <h3>系統管理員</h3>
-                            <h4>某某企業</h4>
-                            <p>管理 Windows Server 網域環境，負責 Veeam 備份策略規劃與執行，確保系統高可用性。</p>
-                        </div>
+                    <div class="relative timeline-dot">
+                        <div class="text-accent font-bold mb-1">2020 - 2023</div>
+                        <h3 class="text-xl font-bold text-primary">系統管理員</h3>
+                        <h4 class="text-lg text-secondary mb-2">某某企業</h4>
+                        <p class="text-slate-600">管理 Windows Server 網域環境，負責 Veeam 備份策略規劃與執行，確保系統高可用性。</p>
                     </div>
                 </div>
             </section>
         </div>
     </main>
 
-    <footer class="footer">
+    <footer class="text-center py-8 text-slate-500 border-t border-slate-200 mt-8 bg-white">
         <p>&copy; 2026 Ray. All rights reserved.</p>
     </footer>
 </body>
