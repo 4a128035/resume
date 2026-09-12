@@ -1,0 +1,260 @@
+/* 
+ * 色票與字級系統 
+ */
+:root {
+    /* 色彩系統 - 簡約平扁風格 */
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --text-color: #333333;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --border-color: #e2e8f0;
+
+    /* 字級系統 */
+    --font-size-base: 16px;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    
+    /* 間距 */
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+}
+
+/* 基礎設定 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: var(--font-size-base);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--light-bg);
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* 導覽列 */
+.header {
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* 主要排版 (桌機預設兩欄) */
+.main-container {
+    max-width: 1200px;
+    margin: var(--spacing-xl) auto;
+    padding: 0 var(--spacing-md);
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--spacing-xl);
+}
+
+/* 區塊共用樣式 */
+.section {
+    background: var(--white);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--border-color); /* 實線邊框 */
+}
+
+h2 {
+    font-size: var(--font-size-2xl);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* 側邊欄 (自我介紹 & 聯絡方式) */
+.profile-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--spacing-md);
+    border: 3px solid var(--border-color);
+}
+
+.profile-header h1 {
+    font-size: var(--font-size-3xl);
+    color: var(--primary-color);
+}
+
+.tagline {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.contact-list {
+    list-style: none;
+}
+
+.contact-list li {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* 技能區塊 */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.skill-category h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+    color: var(--secondary-color);
+}
+
+.skill-category ul {
+    list-style-position: inside;
+}
+
+/* 作品集區塊 */
+.portfolio-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.portfolio-item {
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.portfolio-item h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: var(--spacing-sm);
+    padding: 0.4rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    text-decoration: none;
+}
+
+/* 經歷時間軸 */
+.timeline {
+    border-left: 2px solid var(--border-color);
+    padding-left: var(--spacing-md);
+}
+
+.timeline-item {
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: calc(var(--spacing-md) * -1 - 7px);
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.timeline-content h3 {
+    font-size: var(--font-size-xl);
+    color: var(--primary-color);
+}
+
+.timeline-content h4 {
+    font-size: var(--font-size-lg);
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* 頁尾 */
+.footer {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--secondary-color);
+    background-color: var(--white);
+    border-top: 1px solid var(--border-color);
+    margin-top: var(--spacing-xl);
+}
+
+/* 手機版單欄切換 (RWD) */
+@media (max-width: 768px) {
+    .main-container {
+        grid-template-columns: 1fr;
+        margin: var(--spacing-lg) auto;
+    }
+    
+    .nav-links {
+        gap: var(--spacing-sm);
+    }
+    
+    .nav-links li {
+        margin: 0 5px;
+    }
+}
