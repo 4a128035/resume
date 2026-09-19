@@ -172,28 +172,58 @@
                     <i class="fa-solid fa-laptop-code text-accent"></i>作品集
                 </h2>
                 <div class="space-y-6">
+                    <!-- 1. AI-XDR-Project -->
                     <article class="border border-slate-800/80 rounded-lg p-5 transition-all duration-300 hover:border-accent/50 bg-slate-900/20 hover:shadow-[0_0_25px_rgba(56,189,248,0.25)]">
                         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
                             <h3 class="text-xl font-bold text-primary flex items-center gap-2">
-                                <i class="fa-solid fa-chart-line text-accent text-lg"></i>古飾案內所 儀表板 (GAS)
+                                <i class="fa-solid fa-shield-halved text-accent text-lg"></i>AI 整合型 XDR 安全應變平台 (AI-XDR-Project)
                             </h3>
-                            <span class="inline-block self-start bg-blue-950/40 text-blue-400 border border-blue-900/50 text-xs font-semibold px-2.5 py-1 rounded-full">Google Apps Script</span>
+                            <span class="inline-block self-start bg-indigo-950/40 text-indigo-400 border border-indigo-900/50 text-xs font-semibold px-2.5 py-1 rounded-full">Wazuh SIEM & SecOps</span>
                         </div>
-                        <p class="text-slate-400 mb-4 text-sm leading-relaxed">基於 Google Apps Script 開發的電商自動化儀表板，支援複雜訂單處理、折扣疊加運算（會員與手動折抵）以及訂金與餘額自動追蹤功能，大幅縮短人工核對時間。</p>
-                        <a href="#" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-accent font-semibold py-2 px-4 rounded-lg border border-slate-700 hover:border-accent/50 transition-all text-sm" aria-label="查看古飾案內所儀表板專案細節">
+                        <p class="text-slate-400 mb-4 text-sm leading-relaxed">主導建置基於 Wazuh Manager VM 的開源 XDR 平台。透過 Syslog/API 整合 <b>SentinelOne EDR</b> 端點威脅與漏洞情報、佈署 <b>Suricata NDR</b>（搭載 Intel 10G SFP+ 光纖網卡監聽 Mirror Port）、以及 <b>FortiGate</b> 資安防護日誌。利用 Python 串接大語言模型（Gemini）對跨設備日誌進行關聯分析，產出具備上下文的 Cyber Kill Chain 威脅應變報告書，大幅縮短事件響應時間。</p>
+                        <a href="https://github.com/4a128035/AI-XDR-Project" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-accent font-semibold py-2 px-4 rounded-lg border border-slate-700 hover:border-accent/50 transition-all text-sm" aria-label="查看 AI-XDR-Project 專案細節">
                             <i class="fa-solid fa-circle-info"></i> 查看專案
                         </a>
                     </article>
-                    
+
+                    <!-- 2. network-monitor-ai -->
                     <article class="border border-slate-800/80 rounded-lg p-5 transition-all duration-300 hover:border-accent/50 bg-slate-900/20 hover:shadow-[0_0_25px_rgba(56,189,248,0.25)]">
                         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
                             <h3 class="text-xl font-bold text-primary flex items-center gap-2">
-                                <i class="fa-solid fa-shield-heart text-accent text-lg"></i>企業備份架構建置
+                                <i class="fa-solid fa-gauge-high text-accent text-lg"></i>AI 網路監控與 RCA 診斷系統 (network-monitor-ai)
                             </h3>
-                            <span class="inline-block self-start bg-indigo-950/40 text-indigo-400 border border-indigo-900/50 text-xs font-semibold px-2.5 py-1 rounded-full">Veeam & Infrastructure</span>
+                            <span class="inline-block self-start bg-blue-950/40 text-blue-400 border border-blue-900/50 text-xs font-semibold px-2.5 py-1 rounded-full">Python & LLM Agent</span>
                         </div>
-                        <p class="text-slate-400 mb-4 text-sm leading-relaxed">設計並實作基於 Veeam Essentials 的 3-2-1 備份架構，全面啟用 MFA 多重要素驗證存取控制與獨立 non-domain 備份服務帳號，防範勒索軟體攻擊，確保企業資料安全與法規合規性。</p>
-                        <a href="#" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-accent font-semibold py-2 px-4 rounded-lg border border-slate-700 hover:border-accent/50 transition-all text-sm" aria-label="查看企業備份架構建置專案細節">
+                        <p class="text-slate-400 mb-4 text-sm leading-relaxed">開發智慧型網路監控代理人系統，對接 <b>LibreNMS API</b>（設備狀態）、<b>Graylog API</b>（日誌管理）及 <b>UniFi Controller API</b>（即時流量）。當網路發生異常時，系統自動透過 <b>Paramiko (SSH)</b> 登入設備檢索 dmesg 與原始日誌，將多源指標關聯後餵給 Gemini AI 進行「根因分析 (RCA)」與自動化排障建議，並透過 SMTP 發送精準告警報告。</p>
+                        <a href="https://github.com/4a128035/network-monitor-ai" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-accent font-semibold py-2 px-4 rounded-lg border border-slate-700 hover:border-accent/50 transition-all text-sm" aria-label="查看 network-monitor-ai 專案細節">
+                            <i class="fa-solid fa-circle-info"></i> 查看專案
+                        </a>
+                    </article>
+
+                    <!-- 3. network-topology-analyzer -->
+                    <article class="border border-slate-800/80 rounded-lg p-5 transition-all duration-300 hover:border-accent/50 bg-slate-900/20 hover:shadow-[0_0_25px_rgba(56,189,248,0.25)]">
+                        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                            <h3 class="text-xl font-bold text-primary flex items-center gap-2">
+                                <i class="fa-solid fa-network-wired text-accent text-lg"></i>智慧網路拓撲自動分析系統 (topology-analyzer)
+                            </h3>
+                            <span class="inline-block self-start bg-emerald-950/40 text-emerald-400 border border-emerald-900/50 text-xs font-semibold px-2.5 py-1 rounded-full">Python & vis.js</span>
+                        </div>
+                        <p class="text-slate-400 mb-4 text-sm leading-relaxed">利用 Python 動態輪詢 <b>LibreNMS 與 UniFi Controller API</b> 抓取骨幹 LLDP 鄰近關係、ARP、FDB (MAC Table) 紀錄。透過雙向 LLDP 智慧去重演算法篩選出網路核心骨幹，產生 100% 現網對接、無重疊的單線化拓撲圖，並使用 <b>vis.js</b> 彈簧佈局前端互動可視化。包含實體連接埠定位器（<code>locate_ip.py</code>），能自動追蹤並排除 Uplink/Trunk 幹線，精確找出任何終端直連的 Edge Port。</p>
+                        <a href="https://github.com/4a128035/network-topology-analyzer" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-accent font-semibold py-2 px-4 rounded-lg border border-slate-700 hover:border-accent/50 transition-all text-sm" aria-label="查看 network-topology-analyzer 專案細節">
+                            <i class="fa-solid fa-circle-info"></i> 查看專案
+                        </a>
+                    </article>
+
+                    <!-- 4. Security_News_Bot -->
+                    <article class="border border-slate-800/80 rounded-lg p-5 transition-all duration-300 hover:border-accent/50 bg-slate-900/20 hover:shadow-[0_0_25px_rgba(56,189,248,0.25)]">
+                        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                            <h3 class="text-xl font-bold text-primary flex items-center gap-2">
+                                <i class="fa-solid fa-robot text-accent text-lg"></i>MIS 每日 AI 資安晨報機器人 (Security_News_Bot)
+                            </h3>
+                            <span class="inline-block self-start bg-purple-950/40 text-purple-400 border border-purple-900/50 text-xs font-semibold px-2.5 py-1 rounded-full">Python & Gemini 2.5 Flash</span>
+                        </div>
+                        <p class="text-slate-400 mb-4 text-sm leading-relaxed">自動化威脅情資監控機器人。每日定時向多個國內外資安 RSS 情資源（iThome、TWCERT、BleepingComputer、HKCERT、Synology、Fortinet-PSIRT）抓取重大漏洞通報。利用 <b>Gemini 2.5 Flash</b> 進行智能翻譯、去重、及<b>「企業資產漏洞匹配」</b>（比對 Windows AD、FortiGate、Synology NAS、VMware 等企業現有資產，精確提高威脅風險判定），每天清晨自動透過安全加密 SMTP（SSL/TLS）將精美的 HTML 晨報派送至 IT 信箱。</p>
+                        <a href="https://github.com/4a128035/Security_News_Bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-accent font-semibold py-2 px-4 rounded-lg border border-slate-700 hover:border-accent/50 transition-all text-sm" aria-label="查看 Security_News_Bot 專案細節">
                             <i class="fa-solid fa-circle-info"></i> 查看專案
                         </a>
                     </article>
