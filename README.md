@@ -7,7 +7,9 @@
 *   **HTML5**: 語意化標籤建構頁面結構。
 *   **Tailwind CSS (CDN)**: 
     *   使用 Tailwind Utility Classes 快速構建響應式排版 (桌機雙欄 / 手機單欄)。
-    *   透過 `tailwind.config` 自訂設定檔定義品牌色系 (`primary`, `secondary`, `accent`)。
+    *   透過 `tailwind.config` 自訂設定檔定義品牌色系 (`primary`, `secondary`, `accent`) 並設定預設字型。
+*   **Google Fonts**: 引入 **Chiron GoRound TC (昭源環方)** 中文字型，打造質感一致的精美視覺體驗。
+*   **Font Awesome 6 (CDN)**: 整合最新版 Font Awesome 向量圖示，為各主題區塊、聯絡資訊與作品集加上精美 icon。
 *   **純靜態頁面**，無需 Node.js 編譯，隨開即用。
 
 ## 檔案結構
