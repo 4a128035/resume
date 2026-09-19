@@ -18,9 +18,11 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2c3e50',
-                        secondary: '#34495e',
-                        accent: '#3498db',
+                        primary: '#f8fafc', // 主要淺色字體 (Slate 50)
+                        secondary: '#cbd5e1', // 次要冷色字體 (Slate 300)
+                        accent: '#38bdf8', // 霓虹科技青 (Sky 400)
+                        darkbg: '#0b0f19', // 深邃太空藍背景
+                        darkcard: '#111827', // 暗夜卡片背景 (Slate 900)
                     },
                     fontFamily: {
                         sans: ['"Chiron GoRound TC"', 'sans-serif'],
@@ -32,27 +34,27 @@
     <style type="text/tailwindcss">
         @layer utilities {
             .section-block {
-                @apply bg-white border border-slate-200 rounded-lg p-6 mb-8;
+                @apply bg-darkcard/60 border border-slate-800/80 rounded-lg p-6 mb-8 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.3)];
             }
             .section-title {
-                @apply text-2xl font-bold text-primary border-b-2 border-primary pb-2 mb-4;
+                @apply text-2xl font-bold text-primary border-b border-slate-800/80 pb-2 mb-4;
             }
             .timeline-dot::before {
                 content: '';
-                @apply absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-accent;
+                @apply absolute -left-[21px] top-1.5 w-3 h-3 rounded-full bg-accent shadow-[0_0_10px_rgba(56,189,248,0.6)];
             }
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+<body class="bg-darkbg text-secondary font-sans leading-relaxed">
+    <header class="bg-darkbg/80 border-b border-slate-900/80 shadow-lg sticky top-0 z-50 backdrop-blur-md">
         <nav class="max-w-6xl mx-auto px-4 py-4" aria-label="主要導覽">
             <ul class="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-8 text-primary font-semibold text-sm sm:text-base">
-                <li><a href="#about" class="hover:text-accent hover:underline transition-colors flex items-center gap-1.5" aria-label="前往自我介紹"><i class="fa-solid fa-user text-sm"></i>自我介紹</a></li>
-                <li><a href="#skills" class="hover:text-accent hover:underline transition-colors flex items-center gap-1.5" aria-label="前往技能區塊"><i class="fa-solid fa-brain text-sm"></i>技能</a></li>
-                <li><a href="#portfolio" class="hover:text-accent hover:underline transition-colors flex items-center gap-1.5" aria-label="前往作品集區塊"><i class="fa-solid fa-briefcase text-sm"></i>作品</a></li>
-                <li><a href="#experience" class="hover:text-accent hover:underline transition-colors flex items-center gap-1.5" aria-label="前往經歷區塊"><i class="fa-solid fa-history text-sm"></i>經歷</a></li>
-                <li><a href="#contact" class="hover:text-accent hover:underline transition-colors flex items-center gap-1.5" aria-label="前往聯絡方式區塊"><i class="fa-solid fa-envelope text-sm"></i>聯絡方式</a></li>
+                <li><a href="#about" class="hover:text-accent transition-colors flex items-center gap-1.5" aria-label="前往自我介紹"><i class="fa-solid fa-user text-sm text-accent"></i>自我介紹</a></li>
+                <li><a href="#skills" class="hover:text-accent transition-colors flex items-center gap-1.5" aria-label="前往技能區塊"><i class="fa-solid fa-brain text-sm text-accent"></i>技能</a></li>
+                <li><a href="#portfolio" class="hover:text-accent transition-colors flex items-center gap-1.5" aria-label="前往作品集區塊"><i class="fa-solid fa-briefcase text-sm text-accent"></i>作品</a></li>
+                <li><a href="#experience" class="hover:text-accent transition-colors flex items-center gap-1.5" aria-label="前往經歷區塊"><i class="fa-solid fa-history text-sm text-accent"></i>經歷</a></li>
+                <li><a href="#contact" class="hover:text-accent transition-colors flex items-center gap-1.5" aria-label="前往聯絡方式區塊"><i class="fa-solid fa-envelope text-sm text-accent"></i>聯絡方式</a></li>
             </ul>
         </nav>
     </header>
@@ -63,16 +65,15 @@
             <section id="about" class="section-block text-center md:text-left">
                 <div class="mb-6 flex flex-col items-center md:items-start">
                     <!-- 替換處：請換成您的真實照片 -->
-                    <img src="assets/images/profile.jpg" alt="Ray 的個人照片" class="w-36 h-36 rounded-full object-cover border-4 border-slate-100 mb-4">
+                    <img src="assets/images/profile.jpg" alt="Ray 的個人照片" class="w-36 h-36 rounded-full object-cover border-4 border-slate-800/80 mb-4 shadow-[0_0_20px_rgba(56,189,248,0.15)]">
                     <h1 class="text-3xl font-bold text-primary mb-1">Ray</h1>
-                    <p class="text-secondary font-medium text-sm md:text-base">IT/網路安全工程師 | 系統管理員</p>
+                    <p class="text-accent font-medium text-sm md:text-base">IT/網路安全工程師 | 系統管理員</p>
                 </div>
                 <div class="text-left">
                     <h2 class="section-title flex items-center gap-2">
                         <i class="fa-solid fa-user text-accent"></i>自我介紹
                     </h2>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        <!-- 替換處：請修改為您的真實自我介紹 -->
+                    <p class="text-slate-400 text-sm leading-relaxed">
                         你好！我是一名專注於資訊安全與系統管理的 IT 工程師，擁有管理 Veeam、Wazuh、SentinelOne、FortiGate 等企業級架構的實務經驗。我熱衷於透過自動化工具與腳本提升維運效率，並致力於打造安全可靠的 IT 環境。
                     </p>
                 </div>
@@ -82,33 +83,32 @@
                 <h2 class="section-title flex items-center gap-2">
                     <i class="fa-solid fa-address-book text-accent"></i>聯絡方式
                 </h2>
-                <ul class="space-y-4 text-slate-600">
-                    <!-- 替換處：請換成您的真實聯絡資訊 -->
+                <ul class="space-y-4 text-slate-400">
                     <li class="flex items-center gap-3">
-                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-accent text-sm flex-shrink-0">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-800/80 text-accent text-sm flex-shrink-0">
                             <i class="fa-solid fa-envelope"></i>
                         </span>
                         <div class="min-w-0 flex-1">
-                            <div class="text-xs text-slate-400 font-semibold uppercase">Email</div>
-                            <a href="mailto:ray@example.com" class="text-accent hover:underline break-all text-sm font-medium" aria-label="發送電子郵件給 Ray">ray@example.com</a>
+                            <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Email</div>
+                            <a href="mailto:ray@example.com" class="text-secondary hover:text-accent transition-colors break-all text-sm font-medium" aria-label="發送電子郵件給 Ray">ray@example.com</a>
                         </div>
                     </li>
                     <li class="flex items-center gap-3">
-                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-accent text-sm flex-shrink-0">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-800/80 text-accent text-sm flex-shrink-0">
                             <i class="fa-brands fa-linkedin-in"></i>
                         </span>
                         <div class="min-w-0 flex-1">
-                            <div class="text-xs text-slate-400 font-semibold uppercase">LinkedIn</div>
-                            <a href="https://linkedin.com/in/ray-example" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline break-all text-sm font-medium" aria-label="前往 Ray 的 LinkedIn 檔案">linkedin.com/in/ray-example</a>
+                            <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">LinkedIn</div>
+                            <a href="https://linkedin.com/in/ray-example" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-accent transition-colors break-all text-sm font-medium" aria-label="前往 Ray 的 LinkedIn 檔案">linkedin.com/in/ray-example</a>
                         </div>
                     </li>
                     <li class="flex items-center gap-3">
-                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-accent text-sm flex-shrink-0">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-800/80 text-accent text-sm flex-shrink-0">
                             <i class="fa-brands fa-github"></i>
                         </span>
                         <div class="min-w-0 flex-1">
-                            <div class="text-xs text-slate-400 font-semibold uppercase">GitHub</div>
-                            <a href="https://github.com/ray-example" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline break-all text-sm font-medium" aria-label="前往 Ray 的 GitHub 檔案">github.com/ray-example</a>
+                            <div class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">GitHub</div>
+                            <a href="https://github.com/ray-example" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-accent transition-colors break-all text-sm font-medium" aria-label="前往 Ray 的 GitHub 檔案">github.com/ray-example</a>
                         </div>
                     </li>
                 </ul>
@@ -122,32 +122,31 @@
                     <i class="fa-solid fa-gears text-accent"></i>專業技能
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- 替換處：請修改為您的真實技能 -->
-                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                        <h3 class="text-lg font-semibold text-secondary mb-2 flex items-center gap-1.5">
+                    <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-800/50 hover:border-slate-700/50 transition-colors">
+                        <h3 class="text-lg font-semibold text-primary mb-2 flex items-center gap-1.5">
                             <i class="fa-solid fa-server text-accent text-base"></i>系統管理
                         </h3>
-                        <ul class="list-disc list-inside text-slate-600 space-y-1.5 text-sm pl-1">
+                        <ul class="list-disc list-inside text-slate-400 space-y-1.5 text-sm pl-1">
                             <li>Veeam Backup & Replication</li>
                             <li>Synology NAS 管理</li>
                             <li>Windows Server Administration</li>
                         </ul>
                     </div>
-                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                        <h3 class="text-lg font-semibold text-secondary mb-2 flex items-center gap-1.5">
+                    <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-800/50 hover:border-slate-700/50 transition-colors">
+                        <h3 class="text-lg font-semibold text-primary mb-2 flex items-center gap-1.5">
                             <i class="fa-solid fa-shield-halved text-accent text-base"></i>資訊安全
                         </h3>
-                        <ul class="list-disc list-inside text-slate-600 space-y-1.5 text-sm pl-1">
+                        <ul class="list-disc list-inside text-slate-400 space-y-1.5 text-sm pl-1">
                             <li>Wazuh SIEM</li>
                             <li>SentinelOne EDR</li>
                             <li>FortiGate 防火牆設定</li>
                         </ul>
                     </div>
-                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                        <h3 class="text-lg font-semibold text-secondary mb-2 flex items-center gap-1.5">
+                    <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-800/50 hover:border-slate-700/50 transition-colors">
+                        <h3 class="text-lg font-semibold text-primary mb-2 flex items-center gap-1.5">
                             <i class="fa-solid fa-code text-accent text-base"></i>開發與自動化
                         </h3>
-                        <ul class="list-disc list-inside text-slate-600 space-y-1.5 text-sm pl-1">
+                        <ul class="list-disc list-inside text-slate-400 space-y-1.5 text-sm pl-1">
                             <li>Google Apps Script (GAS)</li>
                             <li>Python / Shell Scripting</li>
                             <li>HTML / CSS / JS</li>
@@ -161,29 +160,28 @@
                     <i class="fa-solid fa-laptop-code text-accent"></i>作品集
                 </h2>
                 <div class="space-y-6">
-                    <!-- 替換處：請修改為您的真實作品 -->
-                    <article class="border border-slate-200 rounded-lg p-5 hover:shadow-md transition-all hover:border-accent/40 bg-white">
+                    <article class="border border-slate-800/80 rounded-lg p-5 hover:shadow-md transition-all hover:border-accent/40 bg-slate-900/20 hover:shadow-[0_0_15px_rgba(56,189,248,0.06)]">
                         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
                             <h3 class="text-xl font-bold text-primary flex items-center gap-2">
                                 <i class="fa-solid fa-chart-line text-accent text-lg"></i>古飾案內所 儀表板 (GAS)
                             </h3>
-                            <span class="inline-block self-start bg-blue-50 text-blue-600 text-xs font-semibold px-2.5 py-1 rounded-full">Google Apps Script</span>
+                            <span class="inline-block self-start bg-blue-950/40 text-blue-400 border border-blue-900/50 text-xs font-semibold px-2.5 py-1 rounded-full">Google Apps Script</span>
                         </div>
-                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">基於 Google Apps Script 開發的電商自動化儀表板，支援複雜訂單處理、折扣疊加運算（會員與手動折抵）以及訂金與餘額自動追蹤功能，大幅縮短人工核對時間。</p>
-                        <a href="#" class="inline-flex items-center gap-1.5 bg-primary hover:bg-secondary text-white font-semibold py-2 px-4 rounded transition-colors text-sm" aria-label="查看古飾案內所儀表板專案細節">
+                        <p class="text-slate-400 mb-4 text-sm leading-relaxed">基於 Google Apps Script 開發的電商自動化儀表板，支援複雜訂單處理、折扣疊加運算（會員與手動折抵）以及訂金與餘額自動追蹤功能，大幅縮短人工核對時間。</p>
+                        <a href="#" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-accent font-semibold py-2 px-4 rounded-lg border border-slate-700 hover:border-accent/50 transition-all text-sm" aria-label="查看古飾案內所儀表板專案細節">
                             <i class="fa-solid fa-circle-info"></i> 查看專案
                         </a>
                     </article>
                     
-                    <article class="border border-slate-200 rounded-lg p-5 hover:shadow-md transition-all hover:border-accent/40 bg-white">
+                    <article class="border border-slate-800/80 rounded-lg p-5 hover:shadow-md transition-all hover:border-accent/40 bg-slate-900/20 hover:shadow-[0_0_15px_rgba(56,189,248,0.06)]">
                         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
                             <h3 class="text-xl font-bold text-primary flex items-center gap-2">
                                 <i class="fa-solid fa-shield-heart text-accent text-lg"></i>企業備份架構建置
                             </h3>
-                            <span class="inline-block self-start bg-indigo-50 text-indigo-600 text-xs font-semibold px-2.5 py-1 rounded-full">Veeam & Infrastructure</span>
+                            <span class="inline-block self-start bg-indigo-950/40 text-indigo-400 border border-indigo-900/50 text-xs font-semibold px-2.5 py-1 rounded-full">Veeam & Infrastructure</span>
                         </div>
-                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">設計並實作基於 Veeam Essentials 的 3-2-1 備份架構，全面啟用 MFA 多重要素驗證存取控制與獨立非網域備份服務帳號，防範勒索軟體攻擊，確保企業資料安全與法規合規性。</p>
-                        <a href="#" class="inline-flex items-center gap-1.5 bg-primary hover:bg-secondary text-white font-semibold py-2 px-4 rounded transition-colors text-sm" aria-label="查看企業備份架構建置專案細節">
+                        <p class="text-slate-400 mb-4 text-sm leading-relaxed">設計並實作基於 Veeam Essentials 的 3-2-1 備份架構，全面啟用 MFA 多重要素驗證存取控制與獨立非網域備份服務帳號，防範勒索軟體攻擊，確保企業資料安全與法規合規性。</p>
+                        <a href="#" class="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-accent font-semibold py-2 px-4 rounded-lg border border-slate-700 hover:border-accent/50 transition-all text-sm" aria-label="查看企業備份架構建置專案細節">
                             <i class="fa-solid fa-circle-info"></i> 查看專案
                         </a>
                     </article>
@@ -194,34 +192,33 @@
                 <h2 class="section-title flex items-center gap-2">
                     <i class="fa-solid fa-timeline text-accent"></i>工作經歷
                 </h2>
-                <div class="border-l-2 border-slate-200 pl-5 ml-2.5 space-y-8">
-                    <!-- 替換處：請修改為您的真實經歷 -->
+                <div class="border-l-2 border-slate-800 pl-5 ml-2.5 space-y-8">
                     <div class="relative timeline-dot">
                         <div class="text-accent font-bold mb-1.5 flex items-center gap-1.5 text-sm">
                             <i class="fa-regular fa-calendar-check"></i> 2023 - 至今
                         </div>
                         <h3 class="text-xl font-bold text-primary flex items-center gap-2">
-                            <i class="fa-solid fa-user-shield text-secondary text-base"></i>資深 IT 工程師
+                            <i class="fa-solid fa-user-shield text-accent text-base"></i>資深 IT 工程師
                         </h3>
-                        <h4 class="text-base text-secondary font-semibold mb-2">某科技股份有限公司</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">負責維運公司內部核心網路、交換機與安全設備，規劃並部署 SentinelOne EDR 端點防護，將日誌整合至 Wazuh SIEM 進行日誌稽核與威脅分析，成功提升企業威脅偵測與主動應變能力。</p>
+                        <h4 class="text-base text-slate-400 font-semibold mb-2">某科技股份有限公司</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">負責維運公司內部核心網路、交換機與安全設備，規劃並部署 SentinelOne EDR 端點防護，將日誌整合至 Wazuh SIEM 進行日誌稽核與威脅分析，成功提升企業威脅偵測與主動應變能力。</p>
                     </div>
                     <div class="relative timeline-dot">
                         <div class="text-accent font-bold mb-1.5 flex items-center gap-1.5 text-sm">
                             <i class="fa-regular fa-calendar-check"></i> 2020 - 2023
                         </div>
                         <h3 class="text-xl font-bold text-primary flex items-center gap-2">
-                            <i class="fa-solid fa-network-wired text-secondary text-base"></i>系統管理員
+                            <i class="fa-solid fa-network-wired text-accent text-base"></i>系統管理員
                         </h3>
-                        <h4 class="text-base text-secondary font-semibold mb-2">某某企業</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">管理多台 Windows Server 網域控制站 (AD) 與虛擬化伺服器環境，設計、測試並執行 Veeam 備份與異地備份策略，主導 NAS 儲存架構擴充與管理，確保高可用性與核心業務連續性。</p>
+                        <h4 class="text-base text-slate-400 font-semibold mb-2">某某企業</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">管理多台 Windows Server 網域控制站 (AD) 與虛擬化伺服器環境，設計、測試並執行 Veeam 備份與異地備份策略，主導 NAS 儲存架構擴充與管理，確保高可用性與核心業務連續性。</p>
                     </div>
                 </div>
             </section>
         </div>
     </main>
 
-    <footer class="text-center py-8 text-slate-500 border-t border-slate-200 mt-8 bg-white">
+    <footer class="text-center py-8 text-slate-500 border-t border-slate-900 mt-8 bg-darkcard/40">
         <p>&copy; 2026 Ray. All rights reserved.</p>
     </footer>
 </body>
