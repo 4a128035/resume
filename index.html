@@ -367,36 +367,33 @@
             formData.append('honeypot', honeypot); // 帶入蜜罐欄位
             
             try {
-                // 5. 使用 fetch 發送非同步 POST 請求
-                const response = await fetch(GAS_WEB_APP_URL, {
+                // 5. 🛡️ 【修復跨域阻斷】使用 'no-cors' 模式發送非同步 POST 請求
+                // 注意：在 no-cors 模式下，瀏覽器只能送出資料，無法讀取 Google 回傳的 JSON 結果（response 是不透明的 (opaque)）
+                // 所以只要 fetch 沒有噴錯，我們就直接當作成功，不再 await response.json()！
+                await fetch(GAS_WEB_APP_URL, {
                     method: 'POST',
                     body: formData,
+                    mode: 'no-cors',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
                 });
                 
-                const result = await response.json();
+                // 6. 成功回饋動效 (既然沒跳 Catch 錯誤，就直接判定送出成功)
+                submitBtn.innerHTML = `<i class="fa-solid fa-circle-check text-slate-950"></i> 傳送成功！`;
+                submitBtn.classList.remove('bg-accent', 'hover:bg-sky-400');
+                submitBtn.classList.add('bg-emerald-400');
                 
-                if (result.status === 'success') {
-                    // 6. 成功回饋動效
-                    submitBtn.innerHTML = `<i class="fa-solid fa-circle-check text-slate-950"></i> 傳送成功！`;
-                    submitBtn.classList.remove('bg-accent', 'hover:bg-sky-400');
-                    submitBtn.classList.add('bg-emerald-400');
+                setTimeout(() => {
+                    // 1.5 秒後恢復按鈕狀態、重設表單，並滑順關閉 Modal
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.classList.remove('bg-emerald-400');
+                    submitBtn.classList.add('bg-accent', 'hover:bg-sky-400');
+                    form.reset();
                     
-                    setTimeout(() => {
-                        // 1.5 秒後恢復按鈕狀態、重設表單，並滑順關閉 Modal
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalBtnText;
-                        submitBtn.classList.remove('bg-emerald-400');
-                        submitBtn.classList.add('bg-accent', 'hover:bg-sky-400');
-                        form.reset();
-                        
-                        toggleContactModal(false);
-                    }, 1500);
-                } else {
-                    throw new Error(result.message || "發生未知錯誤");
-                }
+                    toggleContactModal(false);
+                }, 1500);
             } catch (error) {
                 // 7. 錯誤響應
                 console.error("Submission error:", error);
