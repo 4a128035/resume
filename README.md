@@ -5,17 +5,16 @@
 ## 技術棧 (Tech Stack)
 
 *   **HTML5**: 語意化標籤建構頁面結構。
-*   **CSS3**: 
-    *   CSS Grid & Flexbox 用於排版配置 (桌機兩欄 / 手機單欄)。
-    *   CSS Variables (自訂屬性) 統一色票與字級系統。
-*   **無需任何 JavaScript 框架**，純靜態頁面，確保載入速度與相容性。
+*   **Tailwind CSS (CDN)**: 
+    *   使用 Tailwind Utility Classes 快速構建響應式排版 (桌機雙欄 / 手機單欄)。
+    *   透過 `tailwind.config` 自訂設定檔定義品牌色系 (`primary`, `secondary`, `accent`)。
+*   **純靜態頁面**，無需 Node.js 編譯，隨開即用。
 
 ## 檔案結構
 
 ```text
 resume-project/
-├── index.html       # 履歷主要 HTML 頁面
-├── styles.css       # 樣式設定
+├── index.html       # 履歷主要 HTML 頁面 (包含 Tailwind CSS 設定與樣式)
 ├── assets/          
 │   ├── images/      # 存放圖片資源 (如個人照)
 │   └── scripts/     # 存放腳本 (如有需要擴充)
@@ -39,15 +38,12 @@ resume-project/
 ### 本機檢視
 1. 複製此專案到您的本機。
 2. 透過瀏覽器直接開啟 `index.html`，或是使用 VS Code 的 Live Server 套件啟動本地伺服器檢視。
+*(註：由於使用 Tailwind CDN，首次開啟需要網路連線以載入樣式庫)*
 
 ### 部署至 GitHub Pages
 1. 在 GitHub 建立一個新的 repository (例如: `ray-resume`)。
 2. 將專案推送到該 repository：
    ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: Resume project"
-   git branch -M main
    git remote add origin https://github.com/yourusername/ray-resume.git
    git push -u origin main
    ```
