@@ -435,14 +435,14 @@
             }, []);
 
             return (
-                <div className="flex items-center gap-2 text-sm text-slate-400 font-medium transition-colors hover:text-accent cursor-default">
-                    <i className="fa-solid fa-signal text-accent/80"></i>
-                    <span className="tracking-widest text-[10px] uppercase">Total Views</span>
-                    <div className="h-4 w-px bg-slate-800 mx-1"></div>
+                <div className="flex items-center gap-2.5 px-4 py-1.5 bg-slate-900/60 border border-slate-700/80 rounded-full shadow-[0_0_15px_rgba(56,189,248,0.1)] transition-all hover:border-accent/60 hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] cursor-default">
+                    <i className="fa-solid fa-eye text-accent text-sm drop-shadow-[0_0_5px_rgba(56,189,248,0.8)]"></i>
+                    <span className="text-slate-300 font-bold text-sm tracking-wide">瀏覽人次</span>
+                    <div className="h-5 w-px bg-slate-700 mx-0.5"></div>
                     {count === null ? (
-                        <i className="fa-solid fa-spinner animate-spin text-slate-600 text-xs"></i>
+                        <i className="fa-solid fa-spinner animate-spin text-accent text-sm"></i>
                     ) : (
-                        <span className="text-primary font-bold text-base drop-shadow-[0_0_8px_rgba(56,189,248,0.5)] font-mono">
+                        <span className="text-white font-black text-lg drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">
                             {count.toLocaleString()}
                         </span>
                     )}
