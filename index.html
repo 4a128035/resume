@@ -416,13 +416,16 @@
             const [count, setCount] = React.useState(null);
 
             React.useEffect(() => {
-                // 呼叫免費計數 API (每次 GET /up 就會自動 +1)
-                const namespace = 'ray-resume-2026';
-                const key = 'visitor_count';
-                fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
+                // 呼叫 GAS API 進行計數
+                const gasUrl = "https://script.google.com/macros/s/AKfycbwrKFNI_DPeqUV8hgGgFrxywFA5JFYnQoCE4VNh_lZsUzT9CSkzwMIhslzHjaZRIwTb/exec";
+                fetch(gasUrl + "?action=get_and_increment")
                     .then(res => res.json())
                     .then(data => {
-                        setCount(data.count);
+                        if (data.status === 'success') {
+                            setCount(data.count);
+                        } else {
+                            setCount('Error');
+                        }
                     })
                     .catch(err => {
                         console.error('Counter API 錯誤:', err);
