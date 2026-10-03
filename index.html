@@ -52,8 +52,11 @@
 </head>
 <body class="bg-darkbg text-secondary font-sans leading-relaxed">
     <header class="bg-slate-950/40 border-b border-slate-800/50 shadow-lg sticky top-0 z-50 backdrop-blur-lg">
-        <nav class="max-w-6xl mx-auto px-4 py-4" aria-label="主要導覽">
-            <ul class="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-8 text-primary font-semibold text-sm sm:text-base">
+        <nav class="max-w-6xl mx-auto px-4 py-4 relative flex flex-col md:flex-row md:items-center md:justify-center" aria-label="主要導覽">
+            <!-- React 計數器掛載點 (右上角) -->
+            <div id="visitor-counter-root" class="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 z-50"></div>
+            
+            <ul class="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-8 text-primary font-semibold text-sm sm:text-base w-full">
                 <li><a href="#about" class="hover:text-accent transition-colors flex items-center gap-1.5" aria-label="前往自我介紹"><i class="fa-solid fa-user text-sm text-accent"></i>自我介紹</a></li>
                 <li><a href="#skills" class="hover:text-accent transition-colors flex items-center gap-1.5" aria-label="前往技能區塊"><i class="fa-solid fa-brain text-sm text-accent"></i>技能</a></li>
                 <li><a href="#portfolio" class="hover:text-accent transition-colors flex items-center gap-1.5" aria-label="前往作品集區塊"><i class="fa-solid fa-briefcase text-sm text-accent"></i>作品</a></li>
@@ -315,10 +318,8 @@
         </div>
     </div>
 
-    <footer class="text-center py-8 text-slate-500 border-t border-slate-900 mt-8 bg-darkcard/40 flex flex-col items-center justify-center gap-2">
+    <footer class="text-center py-8 text-slate-500 border-t border-slate-900 mt-8 bg-darkcard/40">
         <p>&copy; 2026 王鐘賢 Ray. All rights reserved.</p>
-        <!-- React 計數器掛載點 -->
-        <div id="visitor-counter-root"></div>
     </footer>
 
     <!-- 彈出式 Modal 開關邏輯 JS -->
@@ -354,7 +355,7 @@
             const honeypot = document.getElementById('form-honeypot').value;
             
             // 2. 🛡️ 【請替換】請將您部署好的 GAS Web App URL 貼在下方雙引號中：
-            const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwrKFNI_DPeqUV8hgGgFrxywFA5JFYnQoCE4VNh_lZsUzT9CSkzwMIhslzHjaZRIwTb/exec"; 
+            const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxgMyKfN8jO5m8FsokgEDkfMcnJ3Etrei3QG6WBBJNoTPiwHvD202v4opEVRqSZ/exec"; 
             
             if (GAS_WEB_APP_URL === "YOUR_GAS_WEB_APP_URL_HERE") {
                 alert("⚠️ 系統提示：\n請先將您的 Google Apps Script (GAS) 部署網址，填入 index.html 的 GAS_WEB_APP_URL 變數中，表單才能正常送出喔！");
@@ -417,7 +418,7 @@
 
             React.useEffect(() => {
                 // 呼叫 GAS API 進行計數
-                const gasUrl = "https://script.google.com/macros/s/AKfycbwrKFNI_DPeqUV8hgGgFrxywFA5JFYnQoCE4VNh_lZsUzT9CSkzwMIhslzHjaZRIwTb/exec";
+                const gasUrl = "https://script.google.com/macros/s/AKfycbxgMyKfN8jO5m8FsokgEDkfMcnJ3Etrei3QG6WBBJNoTPiwHvD202v4opEVRqSZ/exec";
                 fetch(gasUrl + "?action=get_and_increment")
                     .then(res => res.json())
                     .then(data => {
@@ -434,14 +435,14 @@
             }, []);
 
             return (
-                <div className="mt-2 inline-flex items-center gap-2 px-4 py-2 bg-slate-900/40 border border-slate-800/80 rounded-full shadow-lg transition-all hover:border-accent/40 hover:shadow-[0_0_15px_rgba(56,189,248,0.15)]">
-                    <i className="fa-solid fa-chart-line text-accent"></i>
-                    <span className="text-sm text-slate-400 font-semibold tracking-wider flex items-center">
-                        累計造訪：
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-900/80 border border-slate-700/80 rounded-full shadow-lg transition-all hover:border-accent/40 hover:shadow-[0_0_15px_rgba(56,189,248,0.25)] backdrop-blur-md cursor-default">
+                    <i className="fa-solid fa-eye text-accent text-xs"></i>
+                    <span className="text-[11px] text-slate-400 font-semibold tracking-wider flex items-center">
+                        VIEWS
                         {count === null ? (
-                            <i className="fa-solid fa-spinner animate-spin ml-2 text-slate-500"></i>
+                            <i className="fa-solid fa-spinner animate-spin ml-2 text-slate-500 text-xs"></i>
                         ) : (
-                            <span className="text-primary ml-2 font-bold text-base drop-shadow-[0_0_8px_rgba(56,189,248,0.8)]">
+                            <span className="text-primary ml-1.5 font-bold text-xs drop-shadow-[0_0_8px_rgba(56,189,248,0.8)] bg-slate-800 px-1.5 py-0.5 rounded-md">
                                 {count.toLocaleString()}
                             </span>
                         )}
